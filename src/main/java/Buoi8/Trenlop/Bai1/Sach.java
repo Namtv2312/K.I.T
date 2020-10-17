@@ -17,6 +17,7 @@ public class Sach extends TailLieu{
     
     public void nhap()
     {
+        super.nhap();
         Scanner sc= new Scanner(System.in);
         System.out.println("Nhap ten tac gia ");
         tenTacgia= sc.nextLine();

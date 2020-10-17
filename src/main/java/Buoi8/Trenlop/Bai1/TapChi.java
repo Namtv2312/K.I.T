@@ -18,6 +18,7 @@ public class TapChi extends TailLieu{
 public void nhap()
 
 {
+    super.nhap();
     Scanner sc= new Scanner(System.in);
     System.out.println("Nhap so phat hanh");
     soPhatHanh= sc.nextInt();
