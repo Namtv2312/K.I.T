@@ -30,7 +30,7 @@ public class Main {
                         case 6: manageEX.xuatxeom();break;
                         case 7: manageEX.tongtien();break;
                         case 8: manageEX.xuatALL();break;
-                        case 9: manageEX.Sapxep();break;
+                        case 9: manageEX.thongKeLuongGiamDan();break;
                                 
                     }
         }
