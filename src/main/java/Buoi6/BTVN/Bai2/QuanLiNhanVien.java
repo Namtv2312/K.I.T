@@ -14,7 +14,8 @@ import java.util.Scanner;
  */
 public class QuanLiNhanVien {
     Scanner sc= new Scanner(System.in);
-  ArrayList<NhanVien> nhanVienlst=  new ArrayList<>();
+  private  ArrayList<NhanVien> nhanVienlst=  new ArrayList<>();
+ 
     
     public void Menu(){
         System.out.println("\t \t \t Quản lý hệ thống ");
@@ -30,13 +31,22 @@ public class QuanLiNhanVien {
         System.out.println("0.exit");
         System.out.println("Mời bạn chọn ");
     }
+    public void xuatALL()
+     {
+         for(NhanVien tmp : nhanVienlst)
+         {
+             tmp.xuat();
+         }
+     } 
+        public QuanLiNhanVien() {
+    }
      public void nhapSuaongnuoc()
      {
          System.out.println("Nhap so tho :");
          int s= sc.nextInt();
          for(int i=0;i<s;i++){
-             System.out.println("Nhap tho sua so"+i+1);
-             SuaOngNuoc tmp = new SuaOngNuoc();
+             System.out.println("Nhap tho sua so"+i+1);    
+             SuaOngNuoc tmp= new SuaOngNuoc();
              tmp.nhap();
              nhanVienlst.add(tmp);
          }
@@ -58,7 +68,7 @@ public class QuanLiNhanVien {
          int s= sc.nextInt();
          for(int i=0;i<s;i++){
              System.out.println("Nhap xe om so"+i+1);
-             XeOm tmp= new XeOm();
+XeOm tmp= new XeOm();
              tmp.nhap();
              nhanVienlst.add(tmp);
          }
@@ -87,34 +97,76 @@ public class QuanLiNhanVien {
                  nhanVienlst.get(i).xuat();
          }
      }
+   
+    
+   public void tongtien()
+   {
 
-    public QuanLiNhanVien() {
-    }
-     
-    public void tongtien()
-    {
-        int tongTien=0;
-        for(NhanVien tmp : nhanVienlst)
+       
+   }
+  public void thongKeLuongGiamDan() {
+        System.out.println("\t\tNhanVienOngNUOc");
+        // sắp xếp mảng giảm dần theo lương
+        SapXepLuongNVOngNuocGiamDan();
+        for(SuaOngNuoc tmp : nhanVienlst)
         {
-            if(tmp instanceof SuaOngNuoc)
-                tongTien+= ((SuaOngNuoc) tmp).tienLuong();
-            else if(tmp instanceof  XeOm)
-                tongTien+= ((XeOm) tmp).tinhtien();
-            else if(tmp instanceof Shiper)
-                tongTien+= ((Shiper) tmp).tinhtien();
+            tmp.xuat();
         }
-        System.out.println("Tong tien"+tongTien);
-            
-    }
-    public void Sapxep()
-    {
-        for(int i=0;i<nhanVienlst.size();i++)
+        System.out.println("\t\tNhanVienXeOm");
+        // sắp xếp mảng giảm dần theo lương
+        SapXepLuongNVXeOmGiamDan();
+        for(XeOm tmp : nhanVienlst) // xuat danh sach nv ong nuoc
         {
-            for(int j=i+1;j<nhanVienlst.size();j++)
+            tmp.xuat();
+        }
+        System.out.println("\t\tNhanVienShipper");
+        // sắp xếp mảng giảm dần theo lương
+        SapXepLuongShipperGiamDan();
+        for(Shiper tmp : nhanVienlst) // xuat danh sach nv ong nuoc
+        {
+            tmp.xuat();
+        }
+    }
+    private void SapXepLuongNVOngNuocGiamDan() {
+        for (int i = 0; i < nhanVienlst.size()-1; i++) {
+            for (int j=i+1; j<nhanVienlst.size(); j++)
             {
-                if
+                if(nhanVienlst.get(i).tinhTien()<nhanVienlst.get(j).tinhTien())
+                {
+                   SuaOngNuoc tmp;
+                    tmp = nhanVienlst.get(i);//tmp = a;
+                    nhanVienlst.set(i,nhanVienlst.get(j)); //a=b;
+                    nhanVienlst.set(j,tmp); //b=tmp;
+                }
             }
-        
+        }
+    }
+    private void SapXepLuongNVXeOmGiamDan() {
+        for (int i = 0; i < nhanVienlst.size()-1; i++) {
+            for (int j=i+1; j<nhanVienlst.size(); j++)
+            {
+                if(nhanVienlst.get(i).tinhTien()<nhanVienlst.get(j).tinhTien())
+                {
+                    NVXeOm tmp;
+                    tmp = nhanVienlst.get(i);//tmp = a;
+                    nhanVienlst.set(i,nhanVienlst.get(j)); //a=b;
+                    nhanVienlst.set(j,tmp); //b=tmp;
+                }
+            }
+        }
+    }
+    private void SapXepLuongShipperGiamDan() {
+        for (int i = 0; i < nhanVienlst.size()-1; i++) {
+            for (int j=i+1; j<nhanVienlst.size(); j++)
+            {
+                if(nhanVienlst.get(i).tinhtienLuong()<nhanVienlst.get(j).tinhTien())
+                {
+                    Shiper tmp;
+                    tmp = nhanVienlst.get(i);//tmp = a;
+                    nhanVienlst.set(i,nhanVienlst.get(j)); //a=b;
+                    nhanVienlst.set(j,tmp); //b=tmp;
+                }
+            }
         }
     }
          
