@@ -57,19 +57,19 @@ public class QuanliNV {
         for(int i=0;i<nhanvienLst.size();i++)
         {
             if(nhanvienLst.get(i) instanceof SuaOngNuoc)
-                suaongNuoc.xuat();
+               nhanvienLst.get(i).xuat();
         }
         System.out.println("Danh sach giao hang");
         for(int i=0;i<nhanvienLst.size();i++)
         {
             if(nhanvienLst.get(i) instanceof GiaoHang)
-                giaoHang.xuat();
+                nhanvienLst.get(i).xuat();
         }
         System.out.println("Danh sach xe om");
         for(int i=0;i<nhanvienLst.size();i++)
         {
             if(nhanvienLst.get(i) instanceof XeOm)
-                xeOm.xuat();
+               nhanvienLst.get(i).xuat();
         }
     }
     public void tongtien(){

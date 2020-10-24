@@ -20,7 +20,7 @@ public class NhanVien {
     protected int chieuCao;
     protected int canNang;
     
- void nhap()
+ public void nhap()
     {
         Scanner sc= new Scanner(System.in);
         System.out.println("Nhap ho ten nhan vien");
@@ -40,7 +40,7 @@ public class NhanVien {
         System.out.println("Nhap can nang nhan vien");
         canNang=sc.nextInt();
     }
- void xuat()
+ public void xuat()
     {
         System.out.println(toString());
     }

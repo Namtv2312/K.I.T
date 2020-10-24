@@ -11,29 +11,28 @@ import java.util.Scanner;
  *
  * @author NAM SYSTEM
  */
-public class SuaOngNuoc extends NhanVien{
+public class SuaOngNuoc extends NhanVien {
+
     private int soGioSua;
-      public int tinhtienLuong()
-    {
-        return soGioSua*50000;
+
+    public int tinhtienLuong() {
+        return soGioSua * 50000;
     }
-    void nhap()
-    {
+
+    public void nhap() {
         super.nhap();
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Nhap so gio sua ong nuoc: ");
         soGioSua = sc.nextInt();
     }
-    void xuat()       
-    {
+
+    public void xuat() {
         System.out.println(toString());
     }
-  
-        
 
     @Override
     public String toString() {
-        return "SuaOngNuoc{"+ super.toString() + "soGioSua=" + soGioSua + '}';
+        return "SuaOngNuoc{" + super.toString() + "soGioSua=" + soGioSua + '}';
     }
 
     public SuaOngNuoc() {
@@ -47,9 +46,4 @@ public class SuaOngNuoc extends NhanVien{
         this.soGioSua = soGioSua;
     }
 
-   
-    }
-    
-    
-    
-
+}

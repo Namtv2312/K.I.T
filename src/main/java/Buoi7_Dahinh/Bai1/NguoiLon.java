@@ -15,6 +15,7 @@ public class NguoiLon extends DocGia{
     private int cccd;
      void nhap()
      {
+         super.nhap();
          Scanner sc = new Scanner(System.in);
          cccd = sc.nextInt();
      }

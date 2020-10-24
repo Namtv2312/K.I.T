@@ -22,11 +22,11 @@ public class Main {
          int chon= new Scanner(System.in).nextInt();
          switch(chon)
          {
-             case 1: manage.nhap();
-             case 2: manage.xuattreem();
-             case 3: manage.xuatnguoilon();
-             case 4: manage.tongtien();
-             case 0: exit(0);
+             case 1: manage.nhap();break;
+             case 2: manage.xuattreem();break;
+             case 3: manage.xuatnguoilon();break;
+             case 4: manage.tongtien();break;
+             case 0: exit(0);break;
          
          }
         }

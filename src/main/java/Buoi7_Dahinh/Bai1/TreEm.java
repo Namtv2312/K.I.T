@@ -16,6 +16,7 @@ public class TreEm extends DocGia{
     
     void nhap()
     {
+        super.nhap();
         Scanner SC= new Scanner(System.in);
         System.out.println("Nhap thong tin ho ten nguoi dai dien: ");
         thongTinhoten= SC.nextLine();
