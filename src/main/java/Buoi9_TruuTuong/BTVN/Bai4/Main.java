@@ -10,5 +10,7 @@ package Buoi9_TruuTuong.BTVN.Bai4;
  * @author NAM SYSTEM
  */
 public class Main {
-    
+    public static void main(String[] args) {
+       
+    }
 }

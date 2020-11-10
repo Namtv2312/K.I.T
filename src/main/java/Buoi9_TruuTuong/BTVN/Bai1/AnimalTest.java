@@ -54,6 +54,10 @@ public class AnimalTest {
 
         }
 
-        System.out.println("So luong annimal:"+Animal.population);
+        System.out.println("So luong annimal:"+Animal.getPopulation());
+        Cat c= new Cat();
+        c = null;
+        System.gc();
+        System.out.println("so luong annimal: "+ Cat.getPopuCat());
     }
 }

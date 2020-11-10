@@ -5,7 +5,8 @@
  */
 package Buoi9_TruuTuong.BTVN.Bai4;
 
-import java.awt.font.NumericShaper;
+import java.util.Date;
+
 
 /**
  *
@@ -20,15 +21,17 @@ public class Man extends Person{
         return watchingFootball;
     }
 
-    @Override
-    public void setDateOfBirth(double date) {
+    public void setDateOfBirth(Object dob) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public NumericShaper getAgeAsDays() {
+    public int getAgeAsDays() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    @Override
+    public void setDateOfBirth(Date dob) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

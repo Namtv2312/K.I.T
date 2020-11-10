@@ -28,8 +28,10 @@ public class Dog extends Animal{
 
     @Override
     public void Introduce() {
-        System.out.println("my name is"+super.toString() +"___sound: "+makeAsound()+'}');
+        super.Introduce(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
     public Dog() {
         System.out.println("dog is called");

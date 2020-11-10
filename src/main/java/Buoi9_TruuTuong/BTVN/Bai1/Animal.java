@@ -12,43 +12,36 @@ import java.util.Scanner;
  * @author NAM SYSTEM
  */
 public abstract class Animal {
+
     private String name;
-    public static  int population=0;
-    public  void Introduce(){
-        System.out.println(toString() +"sound:"+makeAsound()+'}');
+    public static int population = 0;
+
+    public void Introduce() {
+        System.out.println(makeAsound() + "     I'm :" + name);
     }
-    public String makeAsound(){
+
+    public String makeAsound() {
         return "";
-        
+
     }
-    public void name()
-    {
+
+    public void name() {
         System.out.println("Nhap ten: ");
-        name= new Scanner(System.in).nextLine();
+        name = new Scanner(System.in).nextLine();
     }
 
     public Animal() {
-        System.out.println("ANIMAL");
+        System.out.println("ANIMAL duoc goi");
     }
 
-    @Override
-    public String toString() {
-        return "{" + "name=" + name ;
+    public static int getPopulation() {
+        return Cat.getPopuCat() + Dog.getPopuDog() + Cow.getPupuCow();
     }
 
-    public int getPopulation() {
-        return Cat.getPopuCat()+Dog.getPopuDog()+Cow.getPupuCow();
-    }
     public abstract String giveBirth();
 
     public String getName() {
         return name;
     }
-    
-        
-    
-    
-    
-    
-    
+
 }

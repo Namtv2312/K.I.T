@@ -24,14 +24,15 @@ public class Cat extends Animal{
 
     @Override
     public void Introduce() {
-        System.out.println("my name is:"+super.toString() +"___sound: "+makeAsound()+'}');
+        super.Introduce(); //To change body of generated methods, choose Tools | Templates.
     }
-
     public Cat() {
         System.out.println("cat is called");
         popuCat++;
     }
-
+    public void finalize() throws Throwable{
+            popuCat--;
+    }
     static int getPopuCat() {
         return popuCat;
     }

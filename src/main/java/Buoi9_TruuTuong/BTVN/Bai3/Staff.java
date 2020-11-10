@@ -16,4 +16,21 @@ public class Staff {
     public void payday(){
         
     }
+
+    public Staff() {
+    }
+
+    public ArrayList<StaffMember> getStaffList() {
+        return staffList;
+    }
+
+    public void setStaffList(ArrayList<StaffMember> staffList) {
+        this.staffList = staffList;
+    }
+    public void addnumber(StaffMember sm)
+            
+    {
+           staffList.add(sm);
+    }
+    
 }

@@ -9,12 +9,4 @@ package Buoi9_TruuTuong.BTVN.Bai3;
  *
  * @author NAM SYSTEM
  */
-public class Volunteer extends StaffMember{
-    
 
-    @Override
-    public double pay() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-}

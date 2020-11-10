@@ -11,17 +11,45 @@ package Buoi9_TruuTuong.BTVN.Bai3;
  */
 public class Employee extends StaffMember
 {
-    private String socialSecurityNumber;
-    private double payRate;
+    protected String socialSecurityNumber;
+    protected double payRate;
 
     @Override
     public double pay() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 500;
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "socialSecurityNumber=" + socialSecurityNumber + ", payRate=" + payRate + '}';
+        return super.toString()+"- "+this.socialSecurityNumber+"- "+this.payRate;
     }
+
+  
+
+    public String getSocialSecurityNumber() {
+        return socialSecurityNumber;
+    }
+
+    public void setSocialSecurityNumber(String socialSecurityNumber) {
+        this.socialSecurityNumber = socialSecurityNumber;
+    }
+
+    public double getPayRate() {
+        return payRate;
+    }
+
+    public void setPayRate(double payRate) {
+        this.payRate = payRate;
+    }
+    
+
+    public Employee(String socialSecurityNumber, double payRate, String name, String address, String phone) {
+        super(name, address, phone);
+        this.socialSecurityNumber = socialSecurityNumber;
+        this.payRate = payRate;
+    }
+    
+    
+    
         
 }

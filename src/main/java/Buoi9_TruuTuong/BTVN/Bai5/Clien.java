@@ -10,5 +10,9 @@ package Buoi9_TruuTuong.BTVN.Bai5;
  * @author NAM SYSTEM
  */
 public class Clien {
-    
+    public static void main(String[] args) {
+        Class c= new Class();
+        c.input();
+        c.printList();
+    }
 }

@@ -28,8 +28,10 @@ public class Cow extends Animal{
 
     @Override
     public void Introduce() {
-        System.out.println("my name is"+super.toString() +"___sound: "+makeAsound()+'}');
+        super.Introduce(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
     public Cow() {
         System.out.println("cow is called");

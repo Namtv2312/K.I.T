@@ -5,27 +5,43 @@
  */
 package Buoi9_TruuTuong.BTVN.Bai5;
 
+import java.util.Scanner;
+
 /**
  *
  * @author NAM SYSTEM
  */
-public class Person {
+public abstract class Person {
     private String name;
     private String address;
     private String department;
     
-    public void print()
-    {
-        System.out.println(toString());
+public abstract void print();
         
-    }
+    
 
     public Person() {
     }
 
+    public Person(String name, String address, String department) {
+        this.name = name;
+        this.address = address;
+        this.department = department;
+    }
+    public void nhap()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap ten: ");
+        name= sc.nextLine();
+        System.out.println("Nhap dia chi :");
+        address= sc.nextLine();
+        System.out.println("Nhap chuc vu: ");
+        department= sc.nextLine();
+    }
+
     @Override
     public String toString() {
-        return "Persom{" + "name=" + name + ", address=" + address + ", department=" + department + '}';
+        return "name=" + name + ", address=" + address + ", department=" + department ;
     }   
     public String getName() {
         return name;

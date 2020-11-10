@@ -14,17 +14,36 @@ public class Hourly extends Employee
     private int hourseWorked;
     
     public void addHourses(int moreHourse){
-        
+        this.hourseWorked= moreHourse;
     }
 
     @Override
     public String toString() {
-        return "Hourly{" + "hourseWorked=" + hourseWorked + '}';
+        return super.toString()+"- "+this.hourseWorked;
     }
 
+    public int getHourseWorked() {
+        return hourseWorked;
+    }
+
+    public void setHourseWorked(int hourseWorked) {
+        this.hourseWorked = hourseWorked;
+    }
+
+    
     @Override
     public double pay() {
-        return super.pay(); //To change body of generated methods, choose Tools | Templates.
+        return super.pay()*50; //To change body of generated methods, choose Tools | Templates.
     }
+
+  
+
+    public Hourly(int hourseWorked, String socialSecurityNumber, double payRate, String name, String address, String phone) {
+        super(socialSecurityNumber, payRate, name, address, phone);
+        this.hourseWorked = hourseWorked;
+    }
+
+   
+    
     
 }

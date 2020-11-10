@@ -5,7 +5,8 @@
  */
 package Buoi9_TruuTuong.BTVN.Bai4;
 
-import java.awt.font.NumericShaper;
+import java.util.Date;
+
 
 /**
  *
@@ -20,16 +21,21 @@ public class Woman extends Person{
     public boolean isWearingMakeup() {
         return wearingMakeup;
     }
+
+    public void setDateOfBirth(Object dob) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getAgeAsDays() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setDateOfBirth(Date dob) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
-    @Override
-    public void setDateOfBirth(double date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public NumericShaper getAgeAsDays() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

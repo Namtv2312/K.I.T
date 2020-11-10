@@ -5,13 +5,15 @@
  */
 package Buoi9_TruuTuong.BTVN.Bai4;
 
-import java.awt.font.NumericShaper;
+import java.util.Date;
+
 
 /**
  *
  * @author NAM SYSTEM
  */
 public interface Mammal {
-    public void setDateOfBirth(double date);
-    public NumericShaper getAgeAsDays();
+   
+    public void setDateOfBirth(Date dob);
+    int getAgeAsDays();
 }

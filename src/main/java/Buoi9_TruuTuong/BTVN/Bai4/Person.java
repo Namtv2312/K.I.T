@@ -11,6 +11,8 @@ package Buoi9_TruuTuong.BTVN.Bai4;
  */
 public abstract class Person implements Mammal{
     private String firstName;
+    BloodGroup nhomMau;
+    Address diaChi;
 
     public String getFirstName() {
         return firstName;
