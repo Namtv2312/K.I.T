@@ -5,6 +5,12 @@
  */
 package Buoi10.BTVN.Bai5;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NAM SYSTEM
@@ -34,7 +40,7 @@ public class Bai5 extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         txtAuthor = new javax.swing.JTextField();
         txtTitle = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboMenu = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnreset = new javax.swing.JButton();
@@ -50,7 +56,18 @@ public class Bai5 extends javax.swing.JFrame {
 
         jLabel4.setText("Category");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sách", "Tạp chí", "Báo" }));
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
+        ComboMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sách", "Tạp chí", "Báo" }));
+        ComboMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboMenuActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("BOOK");
@@ -63,6 +80,11 @@ public class Bai5 extends javax.swing.JFrame {
         });
 
         btnreset.setText("Reset");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +106,7 @@ public class Bai5 extends javax.swing.JFrame {
                     .addComponent(txtID)
                     .addComponent(txtAuthor)
                     .addComponent(txtTitle)
-                    .addComponent(jComboBox1, 0, 158, Short.MAX_VALUE))
+                    .addComponent(ComboMenu, 0, 158, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
@@ -116,7 +138,7 @@ public class Bai5 extends javax.swing.JFrame {
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -129,8 +151,53 @@ public class Bai5 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        String id = txtID.getText();
+        String author = txtAuthor.getText();
+        String title = txtTitle.getText();
+        Object selectedItem = ComboMenu.getSelectedItem();
+        JFileChooser option = new JFileChooser();
+        option.setDialogTitle("Choose file");
+        int userSellection = option.showSaveDialog(this);
+        if(userSellection==JFileChooser.APPROVE_OPTION);
+        {
+            File fivetoSave= option.getSelectedFile();
+        //String filePath = "D:\\Java\\KIT\\Kit_Java04\\Kit_JavaSwing\\SaveDataBook.txt";
+        try {
+            FileWriter fw = new FileWriter(fivetoSave);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(""+selectedItem.toString()+ "{");
+            bw.newLine();
+            bw.write("ID: " + id);
+            bw.newLine();
+            bw.write("AUthor: " + author);
+            bw.newLine();
+            bw.write("Title: " + title);
+            bw.newLine();
+            bw.write("}");
+            bw.close();
+            fw.close();
+            JOptionPane.showMessageDialog(this, "SUCCESS", "MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+            setVisible(false);
+            new Bai5().setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "error");
+        }
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
+        txtAuthor.setText(null);
+        txtID.setText(null);
+        txtTitle.setText(null);
+    }//GEN-LAST:event_btnresetActionPerformed
+
+    private void ComboMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboMenuActionPerformed
+        
+    }//GEN-LAST:event_ComboMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,9 +235,9 @@ public class Bai5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboMenu;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnreset;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
