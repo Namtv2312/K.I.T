@@ -177,9 +177,12 @@ boolean hople() {
                     bw.write(tmp.toString());
                     bw.newLine();
 
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, txtNumber.getText() + "  Khong la so nguyen to", "Loi Kiem Tra", 2);
                 }
-                JOptionPane.showMessageDialog(rootPane, "Luu thanh cong");
+
             }
+            JOptionPane.showMessageDialog(rootPane, "Luu thanh cong");
             bw.close();
         } catch (IOException ex) {
             Logger.getLogger(NumberForm.class.getName()).log(Level.SEVERE, null, ex);

@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 public class FormInterFace extends javax.swing.JFrame {
 
     ArrayList<Book> jjj = new ArrayList<>();
+    String messString = "";
 
     /**
      * Creates new form FormInterFace
@@ -34,6 +35,8 @@ public class FormInterFace extends javax.swing.JFrame {
     public FormInterFace() {
         initComponents();
         setLocationRelativeTo(null);
+        btnReset.setEnabled(false);
+        btnXuat.setEnabled(false);
     }
 
     /**
@@ -227,18 +230,19 @@ public class FormInterFace extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
-
-        if (txtID.getText().length() > 0) {
-            if (!txtID.getText().matches("\\d+$")) {
-                JOptionPane.showMessageDialog(rootPane, "Định dạng phải la : 231201");
-                txtID.requestFocus();
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "ID hông được để trống");
-            txtID.requestFocus();
+    boolean hople() {
+        if (txtID.getText().isEmpty() || TXTTITLE.getText().isEmpty() || TXTauthor.getText().isEmpty()) {
+            messString += "Khong duoc de trong";
+            return false;
         }
+        if (!txtID.getText().matches("\\d+") || TXTauthor.getText().matches("\\d+") || TXTTITLE.getText().matches("\\d+")) {
+            messString += "Dinh dang sai. Examble ID: 123, Title: abc, Authors: Avb";
+            return false;
+        }
+        return true;
+
+    }
+    private void txtIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIDFocusLost
 
 
     }//GEN-LAST:event_txtIDFocusLost
@@ -255,7 +259,8 @@ public class FormInterFace extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void TXTauthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTauthorActionPerformed
@@ -264,46 +269,35 @@ public class FormInterFace extends javax.swing.JFrame {
 
     private void TXTauthorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTauthorFocusLost
 
-        if (TXTauthor.getText().length() > 0) {
-            if (!TXTauthor.getText().matches("\\D+")) {
-                JOptionPane.showMessageDialog(rootPane, "Định dạng author phải la :Trần Văn Nam");
-                TXTauthor.requestFocus();
-            }
 
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "author hông được để trống");
-            TXTauthor.requestFocus();
-        }
     }//GEN-LAST:event_TXTauthorFocusLost
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        int id = Integer.valueOf(txtID.getText());
-        String author = TXTauthor.getText();
-        String title = TXTTITLE.getText();
-        String ca = CBcategory.getSelectedItem().toString();
-        Book bbBook = new Book(id, author, title, ca);
-        jjj.add(bbBook);
-        ghiFile();
+        if (hople()) {
+            btnReset.setEnabled(true);
+            btnXuat.setEnabled(true);
+            int id = Integer.valueOf(txtID.getText());
+            String author = TXTauthor.getText();
+            String title = TXTTITLE.getText();
+            String ca = CBcategory.getSelectedItem().toString();
+            Book bbBook = new Book(id, author, title, ca);
+            jjj.add(bbBook);
+            ghiFile();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, messString);
+            messString = "";
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void TXTTITLEFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TXTTITLEFocusLost
-        if (TXTTITLE.getText().length() > 0) {
-            if (!TXTTITLE.getText().matches("\\D+")) {
-                JOptionPane.showMessageDialog(rootPane, "Định dạng title phải la :VPccs s");
-                TXTTITLE.requestFocus();
-            }
 
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "title hông được để trống");
-            TXTTITLE.requestFocus();
-        }
     }//GEN-LAST:event_TXTTITLEFocusLost
 
     private void btnXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatActionPerformed
-     WindowEvent we= new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-     ListBook lb= new ListBook();
-     lb.setVisible(true);
-       
+        WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        ListBook lb = new ListBook();
+        lb.setVisible(true);
+
     }//GEN-LAST:event_btnXuatActionPerformed
 
     void ghiFile() {
@@ -313,6 +307,7 @@ public class FormInterFace extends javax.swing.JFrame {
                 bw.write(jjj.get(i).toString() + jjj.get(i).getCategory());
                 bw.newLine();
             }
+            JOptionPane.showMessageDialog(rootPane,"Ghi file thanh cong");
             bw.close();
         } catch (IOException ex) {
             Logger.getLogger(FormInterFace.class.getName()).log(Level.SEVERE, null, ex);

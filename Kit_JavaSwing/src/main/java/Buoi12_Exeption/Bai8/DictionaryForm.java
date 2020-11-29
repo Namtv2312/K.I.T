@@ -5,6 +5,7 @@
  */
 package Buoi12_Exeption.Bai8;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,6 +25,7 @@ public class DictionaryForm extends javax.swing.JFrame {
     public DictionaryForm() {
         initComponents();
         setLocationRelativeTo(this);
+        txtVi.setEditable(false);
         wordlst.add(new Word(0, "apple", "Qua tao"));
         wordlst.add(new Word(1, "bank", "Ngan hang"));
         wordlst.add(new Word(2, "cow", "Con bo"));
@@ -51,6 +53,17 @@ public class DictionaryForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 0, 102));
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Download\\Hackers-icon.png")); // NOI18N
         jLabel1.setText("DICTIONARY");
+
+        txtEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnActionPerformed(evt);
+            }
+        });
+        txtEn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEnKeyPressed(evt);
+            }
+        });
 
         btnTsl.setBackground(new java.awt.Color(255, 255, 255));
         btnTsl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -143,6 +156,17 @@ public class DictionaryForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnTslActionPerformed
+
+    private void txtEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnActionPerformed
+       
+    }//GEN-LAST:event_txtEnActionPerformed
+
+    private void txtEnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnKeyPressed
+       switch(evt.getKeyCode())
+       {
+           case KeyEvent.VK_ENTER: btnTsl.doClick();
+                   }
+    }//GEN-LAST:event_txtEnKeyPressed
 
     /**
      * @param args the command line arguments
