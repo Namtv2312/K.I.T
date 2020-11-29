@@ -5,11 +5,14 @@
  */
 package Buoi12_Exeption.Bai8;
 
+import java.util.Comparator;
+
 /**
  *
  * @author NAM SYSTEM
  */
 public class Word {
+
     private int id;
     private String en;
     private String vn;
@@ -18,11 +21,6 @@ public class Word {
         this.id = id;
         this.en = en;
         this.vn = vn;
-    }
-
-    @Override
-    public String toString() {
-        return "Word{" + "id=" + id + ", en=" + en + ", vn=" + vn + '}';
     }
 
     public int getId() {
@@ -48,5 +46,20 @@ public class Word {
     public void setVn(String vn) {
         this.vn = vn;
     }
-    
+    public static Comparator<Word> wordEnComparator = new Comparator<Word>() {
+
+        public int compare(Word s1, Word s2) {
+            String wordEn1 = s1.getEn().toUpperCase();
+            String WordEn2 = s2.getEn().toUpperCase();
+
+            //ascending order
+            return wordEn1.compareTo(WordEn2);
+        }
+    };
+
+    @Override
+    public String toString() {
+        return "Word{" + "id=" + id + ", en=" + en + ", vn=" + vn + '}';
+    }
+
 }

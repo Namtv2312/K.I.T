@@ -5,7 +5,8 @@
  */
 package Buoi12_Exeption.Bai8;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.JOptionPane;
 
@@ -15,38 +16,17 @@ import javax.swing.JOptionPane;
  */
 public class DictionaryForm extends javax.swing.JFrame {
 
-    String[] wordEn = {"Apple", "Bank", "Cow", "Door", "Egg", "Fun", "Global", "Hot", "Implement", "Knowledge", " Love", " Money", " Nation"};
-    String[] wordVi = {"Qua tao", "Ngan hang", "Con bo", "Cua ra vao", "Qua trung", "Vui ve", "Toan cau", "Nong", "Trien khai, thuc hien", "Hieu biet", "Tinh yeu", "Tien", "Dan toc"};
-    Word w = new Word(0, wordEn[0], wordVi[0]);
-    Word w1 = new Word(1, wordEn[1], wordVi[1]);
-    Word w2 = new Word(2, wordEn[2], wordVi[2]);
-    Word w3 = new Word(3, wordEn[3], wordVi[3]);
-    Word w4 = new Word(4, wordEn[4], wordVi[4]);
-    Word w5 = new Word(5, wordEn[5], wordVi[5]);
-    Word w6 = new Word(6, wordEn[6], wordVi[6]);
-    Word w7 = new Word(7, wordEn[7], wordVi[7]);
-    Word w8 = new Word(8, wordEn[8], wordVi[8]);
-    Word w9 = new Word(9, wordEn[9], wordVi[9]);
-    Word w10 = new Word(10, wordEn[10], wordVi[10]);
-    Word w11 = new Word(11, wordEn[11], wordVi[11]);
-    Word w12 = new Word(12, wordEn[12], wordVi[12]);
-
-    public static Comparator<Word> getCompBywordEn() {
-        Comparator<Word> comp = new Comparator<Word>() {
-            @Override
-            public int compare(Word s1, Word s2) {
-                return s1.getEn().compareTo(s2.getEn());
-            }
-        };
-        return comp;
-    }
+    ArrayList<Word> wordlst = new ArrayList<>();
 
     /**
      * Creates new form DictionaryForm
      */
     public DictionaryForm() {
         initComponents();
-
+        setLocationRelativeTo(this);
+        wordlst.add(new Word(0, "apple", "Qua tao"));
+        wordlst.add(new Word(1, "bank", "Ngan hang"));
+        wordlst.add(new Word(2, "cow", "Con bo"));
     }
 
     /**
@@ -58,107 +38,111 @@ public class DictionaryForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        txtNhap = new javax.swing.JTextField();
-        txtMean = new javax.swing.JTextField();
-        btnDicch = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        txtEn = new javax.swing.JTextField();
+        btnTsl = new javax.swing.JButton();
+        txtVi = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 102));
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Download\\Hackers-icon.png")); // NOI18N
         jLabel1.setText("DICTIONARY");
 
-        txtNhap.addActionListener(new java.awt.event.ActionListener() {
+        btnTsl.setBackground(new java.awt.Color(255, 255, 255));
+        btnTsl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnTsl.setForeground(new java.awt.Color(0, 0, 0));
+        btnTsl.setText("TRANSLATE");
+        btnTsl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNhapActionPerformed(evt);
+                btnTslActionPerformed(evt);
             }
         });
 
-        btnDicch.setText("Dich");
-        btnDicch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDicchActionPerformed(evt);
-            }
-        });
+        jLabel2.setBackground(new java.awt.Color(51, 255, 51));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setText("ENG");
+        jLabel2.setOpaque(true);
+
+        jLabel3.setBackground(new java.awt.Color(255, 51, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("VIE");
+        jLabel3.setOpaque(true);
+        jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(btnDicch, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(txtNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addComponent(txtMean, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(txtEn, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnTsl, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtVi, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMean, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDicch)
-                .addGap(184, 184, 184))
+                    .addComponent(txtEn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVi, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(113, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTsl, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        JOptionPane.showMessageDialog(rootPane, "Cam on ban da ghe tham");
-    }//GEN-LAST:event_formWindowClosing
-
-    private void txtNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNhapActionPerformed
-
-    }//GEN-LAST:event_txtNhapActionPerformed
-
-
-    private void btnDicchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDicchActionPerformed
-
+    private void btnTslActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTslActionPerformed
+        Collections.sort(wordlst, Word.wordEnComparator);
+        Comparator<Word> c = new Comparator<Word>() {
+            public int compare(Word u1, Word u2) {
+                return u1.getEn().toLowerCase().compareTo(u2.getEn().toLowerCase());
+            }
+        };
         try {
-            int index = Arrays.binarySearch(wordEn, txtNhap.getText());
-            txtMean.setText(wordVi[index]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showConfirmDialog(rootPane, "Them vao nhe", "Khong co trong tu  dien ", JOptionPane.INFORMATION_MESSAGE);
-            String en = JOptionPane.showInputDialog("en");
-            String vi = JOptionPane.showInputDialog("vi");
-            wordEn[wordEn.length + 1] = en;
-            wordVi[wordVi.length + 1] = vi;
+            int index = Collections.binarySearch(wordlst, new Word(0, txtEn.getText().toLowerCase(), null), c);
+            txtVi.setText(wordlst.get(index).getVn());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "khong co trong tu dien roi!!!Them moi nhe");
+            String en = JOptionPane.showInputDialog(rootPane, "Word-En", txtEn.getText());
+            String vi = JOptionPane.showInputDialog(rootPane, "VI", "Mot buoc cuoi cung", JOptionPane.INFORMATION_MESSAGE);
+            wordlst.add(new Word(0, en, vi));
         }
 
-    }//GEN-LAST:event_btnDicchActionPerformed
+    }//GEN-LAST:event_btnTslActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,10 +180,11 @@ public class DictionaryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDicch;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JButton btnTsl;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtMean;
-    private javax.swing.JTextField txtNhap;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField txtEn;
+    private javax.swing.JTextField txtVi;
     // End of variables declaration//GEN-END:variables
 }
